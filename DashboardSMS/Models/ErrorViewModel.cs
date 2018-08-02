@@ -1,5 +1,3 @@
-using System;
-
 namespace DashboardSMS.Models
 {
     public class ErrorViewModel

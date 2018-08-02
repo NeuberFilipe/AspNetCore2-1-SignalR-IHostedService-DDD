@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using DashboardSMS.Models;
+using Microsoft.AspNetCore.SignalR;
+using Hubs;
 
 namespace DashboardSMS.Controllers
 {
+
     public class HomeController : Controller
     {
+        IHubContext<MonitoramentoHub, ITypedHubClient> _chatHubContext;
+        public HomeController(IHubContext<MonitoramentoHub, ITypedHubClient> chatHubContext)
+        {
+            _chatHubContext = chatHubContext;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -36,7 +41,11 @@ namespace DashboardSMS.Controllers
 
         public IActionResult Chart()
         {
-            //var chartService = new ChartServices();
+            return View();
+        }
+
+        public IActionResult _SucessoModal()
+        {
             return View();
         }
     }
